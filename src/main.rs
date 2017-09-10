@@ -1,3 +1,7 @@
+mod game;
+mod game_interface;
+mod console_interface;
+
 fn main() {
-    println!("Hello, world!");
+    game::play_game();
 }
