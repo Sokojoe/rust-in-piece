@@ -1,5 +1,6 @@
 use std::io;
 use entity::Entity;
+use rand::Rng;
 
 pub fn get_player_name(player_name: &mut String) {
     println!("Please enter the name of your player:");
@@ -14,8 +15,9 @@ pub fn display_enemy(enemy:&Entity){
 }
 
 pub fn attack_entity(entity:&mut Entity, attacker: &Entity) {
-    println!("{} attacks {} with {} damage.", attacker.name, entity.name, attacker.base_attack);
-    Entity::take_damage(entity, attacker.base_attack);
+    let damage = ::rand::thread_rng().gen_range(attacker.base_attack, attacker.bonus_attack + 1);
+    println!("{} attacks {} with {} damage.", attacker.name, entity.name, damage);
+    Entity::take_damage(entity, damage);
     println!("{} has {}/{} health left!", entity.name, entity.current_health, entity.max_health);
 }
 

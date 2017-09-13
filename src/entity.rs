@@ -3,6 +3,7 @@ pub struct Entity {
     pub max_health: i32,
     pub current_health: i32,
     pub base_attack: i32,
+    pub bonus_attack: i32,
 }
 
 impl Entity {
@@ -11,12 +12,13 @@ impl Entity {
             name:name,
             max_health:max_health,
             current_health:max_health,
-            base_attack:base_attack
+            base_attack:base_attack,
+            bonus_attack:(base_attack + 15),
         }
     }
 
     pub fn create_enemy () -> Entity{
-        Entity::new(String::from("Thug"), 20, 4)
+        Entity::new(String::from("Thug"), 100, 0)
     }
 
     pub fn is_dead(e: &Entity) -> bool {

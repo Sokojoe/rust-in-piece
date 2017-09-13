@@ -1,3 +1,5 @@
+extern crate rand;
+
 mod game;
 mod game_interface;
 mod console_interface;
