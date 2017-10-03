@@ -5,4 +5,5 @@ authors = ["Sokojoe <sokojoey@gmail.com>"]
 
 [dependencies]
 rand = "0.3.14"
+yansi = "0.3.4"
 
