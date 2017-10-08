@@ -1,6 +1,8 @@
 use std::io;
 use entity::Entity;
 use yansi::Paint;
+use std::collections::HashSet;
+
 
 pub fn enable_windows_console(){
     Paint::enable_windows_ascii();
@@ -12,6 +14,20 @@ pub fn get_player_name(player_name: &mut String) {
         .expect("Failed to read line");
     player_name.pop();
     println!("Welcome to the the Wasteland: {}", Paint::cyan(&player_name));
+}
+
+pub fn get_action(action: &mut String, choice: &mut HashSet<&str>) {
+    println!("What action would you like to take?");
+    let mut actionlist = String::new();
+    for x in choice.iter() {
+        actionlist.push_str(x);
+        actionlist.push_str(", ");
+    }
+    actionlist.pop();
+    actionlist.pop();
+    println!("Actions: {}.", actionlist);
+    io::stdin().read_line(action)
+        .expect("Failed to read line");
 }
 
 pub fn display_enemy(enemy:&Entity){

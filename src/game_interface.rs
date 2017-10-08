@@ -1,5 +1,7 @@
 use console_interface;
 use entity::Entity;
+use std::collections::HashSet;
+
 
 pub fn enable_windows_console(){
     console_interface::enable_windows_console();
@@ -7,6 +9,10 @@ pub fn enable_windows_console(){
 
 pub fn get_player_name(player_name:&mut String) {
     console_interface::get_player_name(player_name);
+}
+
+pub fn get_action(action: &mut String, choice: &mut HashSet<&str>) {
+    console_interface::get_action(action, choice);
 }
 
 pub fn display_enemy(enemy:&Entity) {
