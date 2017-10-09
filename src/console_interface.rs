@@ -3,6 +3,9 @@ use entity::Entity;
 use yansi::Paint;
 use std::collections::HashSet;
 
+/* This file is the interface in which the player uses to interact with the
+game through the terminal. Ie this file should handle all io between the player
+and the game.*/
 
 pub fn enable_windows_console(){
     Paint::enable_windows_ascii();
@@ -28,6 +31,8 @@ pub fn get_action(action: &mut String, choice: &mut HashSet<&str>) {
     println!("Actions: {}.", actionlist);
     io::stdin().read_line(action)
         .expect("Failed to read line");
+    action.pop();
+    println!();
 }
 
 pub fn display_enemy(enemy:&Entity){
@@ -40,6 +45,7 @@ pub fn attack_entity(attacker: &String, entity: &String, damage: &i32) {
 
 pub fn display_health(entity: &Entity){
     println!("{} has {}/{} health left!", Paint::cyan(&entity.name), Paint::green(&entity.current_health), Paint::green(&entity.max_health));
+    println!();
 }
 
 pub fn display_slain(entity: &Entity){

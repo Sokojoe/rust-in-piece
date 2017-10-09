@@ -2,6 +2,9 @@ use console_interface;
 use entity::Entity;
 use std::collections::HashSet;
 
+/* This file should direct all the io between the player and the game
+to the correct interface. Currently the only interface is the terminal so this file
+directs all io to the console_interface. */
 
 pub fn enable_windows_console(){
     console_interface::enable_windows_console();
